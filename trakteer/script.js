@@ -19,12 +19,17 @@ function displayResults(data) {
   if (paginatedResults.length === 0) {
     resultsList.innerHTML = "<li>Tidak ada hasil ditemukan.</li>";
   } else {
-    paginatedResults.forEach((item) => {
+    paginatedResults.forEach((item, index) => {
       const li = document.createElement("li");
       const link = document.createElement("a");
       link.href = item.link; // Menggunakan link dari data CSV
       link.textContent = `${item.artist} - ${item.title}`;
       link.target = "_blank"; // Membuka tautan di tab baru
+
+      // Menambahkan warna merah untuk item terbaru (index 0 setelah di-reverse)
+      if (data.indexOf(item) === 0) {
+        link.classList.add("new-text");
+      }
 
       // Menambahkan kelas animasi khusus untuk "Hinatazaka46" dan "Hiragana"
       if (
