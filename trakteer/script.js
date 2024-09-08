@@ -26,17 +26,19 @@ function displayResults(data) {
       link.textContent = `${item.artist} - ${item.title}`;
       link.target = "_blank"; // Membuka tautan di tab baru
 
-      // Menambahkan warna merah untuk item terbaru (index 0 setelah di-reverse)
-      if (data.indexOf(item) === 0) {
-        link.classList.add("new-text");
-      }
-
       // Menambahkan kelas animasi khusus untuk "Hinatazaka46" dan "Hiragana"
       if (
         item.artist === "Hinatazaka46" ||
         item.artist === "Hiragana Keyakizaka46"
       ) {
         link.classList.add("shining-text");
+      } else if (
+        item.artist === "Hinatazaka46" ||
+        (item.artist === "Hiragana Keyakizaka46") & (data.indexOf(item) === 0)
+      ) {
+        link.classList.add("shining-text");
+      } else if (data.indexOf(item) === 0) {
+        link.classList.add("new-text");
       }
 
       li.appendChild(link);
