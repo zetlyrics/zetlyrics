@@ -29,7 +29,7 @@ function displayResults(data) {
       // Menambahkan kelas animasi khusus untuk "Hinatazaka46" dan "Hiragana"
       if (
         item.artist === "Hinatazaka46" ||
-        item.artist === "Hiragana Keyakizaka46"
+        item.artist === "Hiragana Keyakizaka46" || item.artist === "Hiragana Keyakizaka46 (Hinatazaka46)"
       ) {
         link.classList.add("shining-text");
       } else if (
