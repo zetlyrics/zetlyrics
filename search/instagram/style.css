@@ -117,3 +117,30 @@ a:hover {
     background-position: -100%;
   }
 }
+
+/* New Text Animation for New Posts */
+.new-text {
+  position: relative;
+  font-size: 1em;
+  font-weight: bold;
+  background: linear-gradient(
+    90deg,
+    #ff7f50,
+    #ff6347,
+    #ff4500
+  ); /* Kombinasi oranye cerah dan merah */
+  background-size: 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: -100%;
+  }
+}

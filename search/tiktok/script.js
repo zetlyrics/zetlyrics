@@ -19,7 +19,7 @@ function displayResults(data) {
   if (paginatedResults.length === 0) {
     resultsList.innerHTML = "<li>Tidak ada hasil ditemukan.</li>";
   } else {
-    paginatedResults.forEach((item) => {
+    paginatedResults.forEach((item, index) => {
       const li = document.createElement("li");
       const link = document.createElement("a");
       link.href = item.link; // Menggunakan link dari data CSV
@@ -29,9 +29,17 @@ function displayResults(data) {
       // Menambahkan kelas animasi khusus untuk "Hinatazaka46" dan "Hiragana"
       if (
         item.artist === "Hinatazaka46" ||
-        item.artist === "Hiragana Keyakizaka46"
+        item.artist === "Hiragana Keyakizaka46" ||
+        item.artist === "Hiragana Keyakizaka46 (Hinatazaka46)"
       ) {
         link.classList.add("shining-text");
+      } else if (
+        item.artist === "Hinatazaka46" ||
+        (item.artist === "Hiragana Keyakizaka46") & (data.indexOf(item) === 0)
+      ) {
+        link.classList.add("shining-text");
+      } else if (data.indexOf(item) === 0) {
+        link.classList.add("new-text");
       }
 
       li.appendChild(link);
@@ -59,8 +67,8 @@ function search(data) {
 // Fungsi untuk memuat data dari Google Sheets dalam format CSV
 function loadData() {
   const fileUrls = [
-    "https://docs.google.com/spreadsheets/d/1zzSG5gw_QMAi2_dA_SmE8C-aTQ5XJNyPnVcwMVdfYio/export?format=csv&gid=0#gid=0",
-    "https://docs.google.com/spreadsheets/d/1zzSG5gw_QMAi2_dA_SmE8C-aTQ5XJNyPnVcwMVdfYio/export?format=csv&gid=1574492650#gid=1574492650",
+    "https://docs.google.com/spreadsheets/d/1qNaTCpHD1ioTE6OlUNFYDDsVGAlLiCv8en4rvSrVAd8/export?format=csv&gid=0#gid=0",
+    "https://docs.google.com/spreadsheets/d/1qNaTCpHD1ioTE6OlUNFYDDsVGAlLiCv8en4rvSrVAd8/export?format=csv&gid=554560004#gid=554560004",
   ];
 
   const promises = fileUrls.map((url) =>
